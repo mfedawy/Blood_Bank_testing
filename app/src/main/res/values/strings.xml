@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">بنك الدم</string>
+
+    <string name="title_activity_spalsh">SpalshActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="next">التالي</string>
+    <string name="skip">تخطي</string>
+    <string name="slider_text">تطبيق بنك الدم هو تطبيق تدريبي لأتقان مهارات الاندرويد الأساسية</string>
+    <string name="start">البدء</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
