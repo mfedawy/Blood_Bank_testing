@@ -22,6 +22,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.echoman.bb_splash_cycle.R;
 import com.echoman.bb_splash_cycle.Ui.authui.LoginActivity;
+import static com.echoman.bb_splash_cycle.data.local.SharedPreferencesManger.setSharedPreferences;
 
 import butterknife.OnClick;
 
@@ -41,7 +42,8 @@ public class WelcomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_welcome, container, false);
         layoutDots = view.findViewById(R.id.layoutDots);
         // layouts of all welcome sliders
-        layouts = new int[]{
+
+                layouts = new int[]{
                 R.layout.welcome_slide1,
                 R.layout.welcome_slide2};
         // adding bottom dots

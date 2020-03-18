@@ -7,13 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.echoman.bb_splash_cycle.Helper.BaseActivity;
 import com.echoman.bb_splash_cycle.Helper.HelperMethod;
 import com.echoman.bb_splash_cycle.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
 
     //@BindView(R.id.framlayout)
