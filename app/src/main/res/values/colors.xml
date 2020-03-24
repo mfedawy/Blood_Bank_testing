@@ -28,6 +28,7 @@
     <color name="dot_light_screen3">#772904</color>
 
     <color name="dot_light_screen4">#772904</color>
+    <color name="black">#0E0606</color>
 
 
     -<array name="array_dot_active">

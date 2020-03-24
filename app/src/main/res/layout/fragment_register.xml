@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login"
+    tools:context=".Ui.authui.LoginActivity"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+    tools:layout_editor_absoluteX="47dp"
+    tools:layout_editor_absoluteY="235dp">
+    ​<androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_register_cl_sub_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        ​
+        <TextView
+            android:id="@+id/fragment_register_tv_crate_a_new_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="center"
+            android:text="انشاء حساب جديد"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_18sdp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+        ​
+        ​
+        <EditText
+            android:id="@+id/fragment_register_et_user_name"
+            style="@style/et_register"
+            android:drawableEnd="@drawable/user_name_drawable"
+            android:hint="الاسم"
+            android:textColor="@color/black"
+
+            android:background="@drawable/rectangle23"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_register_tv_crate_a_new_account" />
+        ​
+        <EditText
+            android:id="@+id/fragment_register_et_e_mail"
+            style="@style/et_register"
+            android:drawableRight="@drawable/mail_drawable"
+            android:hint="البريد الالكتروني"
+            android:textColor="@color/black"
+
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_register_et_user_name" />
+        ​
+        <EditText
+            android:id="@+id/fragment_register_et_date_of_birth"
+            style="@style/et_register"
+            android:drawableRight="@drawable/ic_date"
+            android:hint="تاريخ الميلاد"
+
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_register_et_e_mail" />
+        ​
+        <LinearLayout
+            android:id="@+id/blood_lin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_register_et_date_of_birth"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:background="@drawable/rectangle23"
+            android:gravity="center_vertical"
+            android:weightSum="10"
+            android:layout_height="wrap_content">
+
+        <Spinner
+            android:id="@+id/fragment_register_sp_blood_type"
+            android:layout_width="0dp"
+            android:layout_weight="8.5"
+            android:padding="@dimen/_10sdp"
+            android:textAlignment="gravity"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:popupBackground="@android:color/white"
+            android:dropDownSelector="@color/black"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/blood_drop"
+                android:layout_height="@dimen/_20sdp"
+                >
+
+            </ImageView>
+        </LinearLayout>
+        <EditText
+            android:id="@+id/fragment_register_et_last_date_for_donation"
+            style="@style/et_register"
+            android:drawableRight="@drawable/ic_date"
+            android:hint="اخر تاريخ للتبرع"
+            android:inputType="date"
+            android:textColor="@color/black"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/blood_lin" />
+        ​<LinearLayout
+        android:id="@+id/lin2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:background="@drawable/rectangle23"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_register_et_last_date_for_donation"
+        android:weightSum="10">
+
+        <Spinner
+            android:id="@+id/fragment_register_sp_government"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="8.5"
+            android:padding="@dimen/_10sdp"
+            android:textAlignment="gravity"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:popupBackground="@android:color/white"
+            android:dropDownSelector="@color/black"
+            android:layout_gravity="center_vertical|center_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:src="@drawable/home_drawable"
+            android:layout_height="@dimen/_20sdp"
+            >
+        </ImageView>
+    </LinearLayout>​
+        ​<LinearLayout
+        android:id="@+id/lin3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:background="@drawable/rectangle23"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/lin2"
+        android:weightSum="10">
+
+        <Spinner
+            android:id="@+id/fragment_register_sp_city"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="8.5"
+            android:padding="@dimen/_10sdp"
+            android:textAlignment="gravity"
+            android:popupBackground="@android:color/white"
+            android:dropDownSelector="@color/black"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:src="@drawable/home_drawable"
+            android:layout_height="@dimen/_20sdp"
+            >
+        </ImageView>
+    </LinearLayout>​
+        <EditText
+            android:id="@+id/fragment_register_et_phone"
+            style="@style/et_register"
+            android:drawableRight="@drawable/phone_drawable"
+            android:hint="رقم الهاتف"
+            android:textColor="@color/black"
+
+            android:inputType="phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lin3" />
+        ​
+        <EditText
+            android:id="@+id/fragment_register_et_password"
+            style="@style/et_register"
+            android:drawableRight="@drawable/lock_drawable"
+            android:hint="كلمه المرور"
+            android:inputType="text"
+            android:textColor="@color/black"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_register_et_phone" />
+        ​
+        <EditText
+            android:id="@+id/fragment_register_et_confirm_password"
+            style="@style/et_register"
+            android:drawableRight="@drawable/lock_drawable"
+            android:hint="تأكيد كلمة المرور"
+            android:inputType="text"
+            android:textColor="@color/black"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_register_et_password" />
+        ​
+
+        <Button
+            android:id="@+id/fragment_register_btn_sign_up"
+
+            android:layout_width="168dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/rectangle23"
+            android:padding="@dimen/_5sdp"
+            android:gravity="center"
+            android:text="تسجيل"
+            android:textColor="#D10606"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_register_et_confirm_password"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        />
+        ​
+        ​
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    ​
+</ScrollView>
+    ​
+    </androidx.constraintlayout.widget.ConstraintLayout>
+

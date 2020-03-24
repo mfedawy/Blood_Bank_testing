@@ -22,6 +22,12 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.echoman.bb_splash_cycle.R;
 import com.echoman.bb_splash_cycle.Ui.authui.LoginActivity;
+import com.echoman.bb_splash_cycle.Ui.mainui.MainUi;
+
+import static com.echoman.bb_splash_cycle.data.local.SharedPreferencesManger.REMEMBER_ME;
+import static com.echoman.bb_splash_cycle.data.local.SharedPreferencesManger.USER_DATA;
+import static com.echoman.bb_splash_cycle.data.local.SharedPreferencesManger.loadBoolean;
+import static com.echoman.bb_splash_cycle.data.local.SharedPreferencesManger.loadData;
 import static com.echoman.bb_splash_cycle.data.local.SharedPreferencesManger.setSharedPreferences;
 
 import butterknife.OnClick;
@@ -31,7 +37,6 @@ public class WelcomeFragment extends Fragment {
     ViewPager viewPager;
     LinearLayout layoutDots;
     Button btnNext;
-
     private TextView[] dots;
     private int[] layouts;
 
@@ -42,7 +47,6 @@ public class WelcomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_welcome, container, false);
         layoutDots = view.findViewById(R.id.layoutDots);
         // layouts of all welcome sliders
-
                 layouts = new int[]{
                 R.layout.welcome_slide1,
                 R.layout.welcome_slide2};
@@ -105,7 +109,6 @@ public class WelcomeFragment extends Fragment {
             dots[i].setTextColor(colorsInactive[currentPage]);
             layoutDots.addView(dots[i]);
         }
-
         if (dots.length > 0)
             dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
@@ -115,9 +118,15 @@ public class WelcomeFragment extends Fragment {
     }
 
     private void launchHomeScreen() {
+
         // prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(getActivity(), LoginActivity.class));
-        // getActivity().finish();
+
+        if(loadBoolean(getActivity(),REMEMBER_ME)&& loadData(getActivity(),USER_DATA)!=null){
+            startActivity(new Intent(getActivity(), MainUi.class));
+        }
+        else {
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+        }// getActivity().finish();
     }
 
     //  viewpager change listener
@@ -192,7 +201,6 @@ public class WelcomeFragment extends Fragment {
         public boolean isViewFromObject(View view, Object obj) {
             return view == obj;
         }
-
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {

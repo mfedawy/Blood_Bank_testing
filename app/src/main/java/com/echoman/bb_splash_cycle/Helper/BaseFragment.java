@@ -4,7 +4,9 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-public class BaseFragment extends Fragment {
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+
+public abstract class BaseFragment extends Fragment {
 
     public BaseActivity baseActivity;
 

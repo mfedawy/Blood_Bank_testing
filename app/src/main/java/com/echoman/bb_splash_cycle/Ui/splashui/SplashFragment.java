@@ -31,11 +31,6 @@ public class SplashFragment extends Fragment {
     TextView splashTitle;
     private static int SPLASH_TIME_OUT = 3000;
 
-    public SplashFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,12 +44,12 @@ public class SplashFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 Fragment myFragment = new WelcomeFragment();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, myFragment).addToBackStack(null).commit();
+                activity.getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.framelayout, myFragment)
+                        .addToBackStack(null).commit();
                 //HelperMethod.replaceFragment(getChildFragmentManager(),R.id.framelayout,myFragment);
-
             }
         }, SPLASH_TIME_OUT);
 

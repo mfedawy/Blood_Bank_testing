@@ -1,5 +1,5 @@
 
-package com.echoman.bb_splash_cycle.data.model.test;
+package com.echoman.bb_splash_cycle.data.model.login;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

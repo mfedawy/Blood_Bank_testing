@@ -1,10 +1,15 @@
 
-package com.echoman.bb_splash_cycle.data.model.test;
+package com.echoman.bb_splash_cycle.data.model.general.city;
 
+import com.echoman.bb_splash_cycle.data.model.general.gove.GoveData;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class City {
+public class CityData {
+    public CityData(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     @SerializedName("id")
     @Expose
@@ -23,7 +28,7 @@ public class City {
     private String governorateId;
     @SerializedName("governorate")
     @Expose
-    private Governorate governorate;
+    private GoveData governorate;
 
     public Integer getId() {
         return id;
@@ -65,11 +70,11 @@ public class City {
         this.governorateId = governorateId;
     }
 
-    public Governorate getGovernorate() {
+    public GoveData getGovernorate() {
         return governorate;
     }
 
-    public void setGovernorate(Governorate governorate) {
+    public void setGovernorate(GoveData governorate) {
         this.governorate = governorate;
     }
 

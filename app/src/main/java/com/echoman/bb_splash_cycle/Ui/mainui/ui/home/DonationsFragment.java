@@ -38,6 +38,6 @@ public class DonationsFragment extends Fragment {
         String api = prefs.getString(SharedPreferencesManger.USER_APITOKEN, "No name defined");//"No name defined" is the default value.
 
         Toast.makeText(getContext(),api,Toast.LENGTH_LONG).show();
-        GeneralRequest.getalldonations(getActivity(),getRetrofitClient().getdonations("W4mx3VMIWetLcvEcyF554CfxjZHwdtQldbdlCl2XAaBTDIpNjKO1f7CHuwKl") );
+//        GeneralRequest.getalldonations(getActivity(),getRetrofitClient().getdonations("W4mx3VMIWetLcvEcyF554CfxjZHwdtQldbdlCl2XAaBTDIpNjKO1f7CHuwKl") );
     }
 }

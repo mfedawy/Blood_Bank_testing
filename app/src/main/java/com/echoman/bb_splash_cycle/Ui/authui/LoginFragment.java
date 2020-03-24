@@ -1,6 +1,7 @@
 package com.echoman.bb_splash_cycle.Ui.authui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
@@ -19,6 +21,8 @@ import com.echoman.bb_splash_cycle.Helper.BaseFragment;
 import com.echoman.bb_splash_cycle.Helper.GeneralRequest;
 import com.echoman.bb_splash_cycle.Helper.HelperMethod;
 import com.echoman.bb_splash_cycle.R;
+import com.echoman.bb_splash_cycle.Ui.splashui.WelcomeFragment;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -96,7 +100,13 @@ public class LoginFragment extends BaseFragment {
                 HelperMethod.disappearKeypad(getActivity(),view);
                 break;
             case R.id.login_newaccount_tv:
-                break;
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+
+                Fragment myFragment = new RegisterFragment();
+               activity.getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.login_framlayout, myFragment)
+                        .addToBackStack(null).commit();
+               break;
         }
     }
 
@@ -119,5 +129,6 @@ public class LoginFragment extends BaseFragment {
     private void onCall(String phone, String password) {
         GeneralRequest.onAuth(getRetrofitClient().onLogin(phone, password), phone,password, rememberme,getActivity(), LOGIN , "");
     }
+
 
 }

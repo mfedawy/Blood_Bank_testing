@@ -3,6 +3,7 @@ package com.echoman.bb_splash_cycle.data.local;
 import android.app.Activity;
 import android.content.SharedPreferences;
 
+import com.echoman.bb_splash_cycle.data.model.general.blood.BloodType;
 import com.google.gson.Gson;
 
 public class SharedPreferencesManger {
@@ -81,6 +82,14 @@ public class SharedPreferencesManger {
         return sharedPreferences.getString(data_Key, null);
     }
 
+    public static BloodType loadbloodgroubs(Activity activity) {
+        BloodType bloodType = null;
+
+        Gson gson = new Gson();
+        bloodType = gson.fromJson(loadData(activity, "bloodgroubs"), BloodType.class);
+
+        return bloodType;
+    }
     public static boolean loadBoolean(Activity activity, String data_Key) {
         setSharedPreferences(activity);
 

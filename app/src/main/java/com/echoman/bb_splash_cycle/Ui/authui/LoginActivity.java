@@ -1,6 +1,7 @@
 package com.echoman.bb_splash_cycle.Ui.authui;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,5 +33,6 @@ public class LoginActivity extends BaseActivity {
         transaction.commit();
 
     }
+
 
 }
