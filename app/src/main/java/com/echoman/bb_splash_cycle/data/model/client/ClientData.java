@@ -1,17 +1,17 @@
 
-package com.echoman.bb_splash_cycle.data.model.auth;
+package com.echoman.bb_splash_cycle.data.model.client;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AuthData {
+public class ClientData {
 
     @SerializedName("api_token")
     @Expose
     private String apiToken;
     @SerializedName("client")
     @Expose
-    private Client client;
+    private ClientFullData client;
 
     public String getApiToken() {
         return apiToken;
@@ -21,11 +21,11 @@ public class AuthData {
         this.apiToken = apiToken;
     }
 
-    public Client getClient() {
+    public ClientFullData getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
+    public void setClient(ClientFullData client) {
         this.client = client;
     }
 

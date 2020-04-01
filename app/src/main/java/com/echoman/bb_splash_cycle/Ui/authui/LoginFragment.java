@@ -27,7 +27,7 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+import com.echoman.bb_splash_cycle.Ui.authui.PassForgetFragment;
 import static com.echoman.bb_splash_cycle.Helper.Constant.LOGIN;
 import static com.echoman.bb_splash_cycle.data.api.RetrofitManger.getRetrofitClient;
 
@@ -86,6 +86,10 @@ public class LoginFragment extends BaseFragment {
 
                 break;
             case R.id.login_forget_tv:
+                Fragment fragment = new PassForgetFragment();
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.login_framlayout, fragment)
+                        .addToBackStack(null).commit();
                 break;
             case R.id.login_remember_cb:
                 boolean checked = ((CheckBox) view).isChecked();

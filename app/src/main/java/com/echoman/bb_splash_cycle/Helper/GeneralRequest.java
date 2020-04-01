@@ -3,25 +3,34 @@ package com.echoman.bb_splash_cycle.Helper;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.echoman.bb_splash_cycle.Adapter.BloodSpinnerAdapter;
 import com.echoman.bb_splash_cycle.Adapter.CitySpinnerAdapter;
 import com.echoman.bb_splash_cycle.Adapter.GoveSpinnerAdapter;
 import com.echoman.bb_splash_cycle.Adapter.SpinnerAdapter;
+import com.echoman.bb_splash_cycle.R;
+import com.echoman.bb_splash_cycle.Ui.authui.PassForgetFragment;
+import com.echoman.bb_splash_cycle.Ui.authui.PassReset;
 import com.echoman.bb_splash_cycle.Ui.mainui.MainUi;
-import com.echoman.bb_splash_cycle.data.model.auth.Auth;
+import com.echoman.bb_splash_cycle.data.model.client.Client;
 import com.echoman.bb_splash_cycle.data.model.donation.Donation;
 import com.echoman.bb_splash_cycle.data.model.general.blood.BloodData;
 import com.echoman.bb_splash_cycle.data.model.general.blood.BloodType;
 import com.echoman.bb_splash_cycle.data.model.general.city.City;
 import com.echoman.bb_splash_cycle.data.model.general.gove.Gove;
 import com.echoman.bb_splash_cycle.data.model.generalResponse.GeneralResponse;
+import com.echoman.bb_splash_cycle.data.model.login.resetPassword.ResetPasword;
+import com.echoman.bb_splash_cycle.data.model.login.signUp.SignUp;
 
+import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -36,17 +45,18 @@ import static com.echoman.bb_splash_cycle.data.local.SharedPreferencesManger.USE
 import static com.echoman.bb_splash_cycle.data.local.SharedPreferencesManger.USER_PASSWORD;
 import static com.echoman.bb_splash_cycle.data.local.SharedPreferencesManger.saveApi;
 import static com.echoman.bb_splash_cycle.data.local.SharedPreferencesManger.saveData;
+import static com.echoman.bb_splash_cycle.data.local.SharedPreferencesManger.saveUserData;
 import static com.echoman.bb_splash_cycle.data.local.SharedPreferencesManger.setSharedPreferences;
 
 public class GeneralRequest {
 
-    public static void onAuth(Call<Auth> call, String phone, String password, boolean rememberMe, Activity activity
+    public static void onAuth(Call<Client> call, String phone, String password, boolean rememberMe, Activity activity
             , String actionType, String apiToken) {
-        call.enqueue(new Callback<Auth>() {
+        call.enqueue(new Callback<Client>() {
             public String userapiToken;
 
             @Override
-            public void onResponse(Call<Auth> call, Response<Auth> response) {
+            public void onResponse(Call<Client> call, Response<Client> response) {
                 try {
                     if (response.body().getStatus() == 1) {
 
@@ -57,6 +67,7 @@ public class GeneralRequest {
                         saveData(activity, REMEMBER_ME, rememberMe);
                         saveData(activity, USER_PASSWORD, password);
                         saveApi(activity, USER_APITOKEN, userapiToken);
+                        saveUserData(activity,response.body().getData());
 
                         if (actionType.equals(LOGIN)) {
                             userapiToken = response.body().getData().getApiToken();
@@ -76,7 +87,7 @@ public class GeneralRequest {
             }
 
             @Override
-            public void onFailure(Call<Auth> call, Throwable t) {
+            public void onFailure(Call<Client> call, Throwable t) {
             }
         });
     }
@@ -102,82 +113,188 @@ public class GeneralRequest {
         });
     }
 
-    public static void getBloodTypes(Activity activity, final Call<BloodType> method, Spinner spinner, BloodSpinnerAdapter bloodSpinnerAdapter,
-                                     int selectedid) {
-        method.enqueue(new Callback<BloodType>() {
+    public static void signUp(FragmentActivity activity, Call<Client> mySignUp) {
+    mySignUp.enqueue(new Callback<Client>() {
+        @Override
+        public void onResponse(Call<Client> call, Response<Client> response) {
+            try {
+                if (response.body().getStatus()==1)
+                {
+                    Toast.makeText(activity,response.body().getMsg(),Toast.LENGTH_LONG).show();
 
+                    setSharedPreferences(activity);
+
+                    saveData(activity, USER_DATA, response.body().getData().getClient());
+                    saveApi(activity, USER_APITOKEN, response.body().getData().getApiToken());
+                    activity.startActivity(new Intent(activity, MainUi.class));
+
+
+
+                }
+                else {
+                    Toast.makeText(activity,response.body().getMsg(),Toast.LENGTH_LONG).show();
+
+
+                }
+            }
+            catch(Exception e){
+                Toast.makeText(activity, e.getMessage(),Toast.LENGTH_LONG).show();
+            }
+
+
+        }
+
+        @Override
+        public void onFailure(Call<Client> call, Throwable t) {
+            Toast.makeText(activity,"failer",Toast.LENGTH_LONG).show();
+
+        }
+    });
+    }
+
+
+    public static void getSpinnerData(Activity activity, final Spinner spinner, final SpinnerAdapter adapter, final String hint,
+                                      Call<GeneralResponse> method, final View view, final int selectedId, final boolean show) {
+
+
+        method.enqueue(new Callback<GeneralResponse>() {
             @Override
-            public void onResponse(Call<BloodType> call, Response<BloodType> response) {
+            public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
                 try {
+                    if (show) {
+                        HelperMethod.dismissProgressDialog();
+                    }
+
                     if (response.body().getStatus() == 1) {
-                        bloodSpinnerAdapter.setData(response.body().getData(), "فصيلة الدم");
-                        spinner.setAdapter(bloodSpinnerAdapter);
+                        if (view != null) {
+                            view.setVisibility(View.VISIBLE);
+                        }
+                        adapter.setData(response.body().getData(), hint);
+
+                        spinner.setAdapter(adapter);
+
+                        spinner.setSelection(selectedId);
 
 
                     }
                 } catch (Exception e) {
 
                 }
+
             }
 
             @Override
-            public void onFailure(Call<BloodType> call, Throwable t) {
+            public void onFailure(Call<GeneralResponse> call, Throwable t) {
+                if (show) {
+                    HelperMethod.dismissProgressDialog();
+                }
 
             }
         });
-
-
     }
 
+    public static void getSpinnerData(final Activity activity, final Spinner spinner, final SpinnerAdapter adapter, final String hint
+            , final Call<GeneralResponse> method, final int selectedId1, final AdapterView.OnItemSelectedListener listener) {
 
-    public static void getgoverment(Activity activity, final Call<Gove> method, Spinner spinner, GoveSpinnerAdapter goveSpinnerAdapter,
-                                    int selectedid) {
-        method.enqueue(new Callback<Gove>() {
-
+        method.enqueue(new Callback<GeneralResponse>() {
             @Override
-            public void onResponse(Call<Gove> call, Response<Gove> response) {
+            public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
                 try {
-                    if (response.body().getStatus() == 1) {
-                        goveSpinnerAdapter.setData(response.body().getData(), "المحافظة");
-                        spinner.setAdapter(goveSpinnerAdapter);
 
+                    HelperMethod.dismissProgressDialog();
+                    if (response.body().getStatus() == 1) {
+
+                        adapter.setData(response.body().getData(), hint);
+
+                        spinner.setAdapter(adapter);
+
+                        spinner.setSelection(selectedId1);
+
+                        spinner.setOnItemSelectedListener(listener);
 
                     }
+
                 } catch (Exception e) {
 
                 }
             }
 
             @Override
-            public void onFailure(Call<Gove> call, Throwable t) {
+            public void onFailure(Call<GeneralResponse> call, Throwable t) {
+                HelperMethod.dismissProgressDialog();
+            }
+        });
+    }
+
+    public static void passForget(FragmentActivity activity, Call<ResetPasword> resetPass,String phone) {
+        resetPass.enqueue(new Callback<ResetPasword>() {
+            @Override
+            public void onResponse(Call<ResetPasword> call, Response<ResetPasword> response) {
+                try {
+                    if (response.body().getStatus()==1){
+                        Toast.makeText(activity,response.body().getMsg(),Toast.LENGTH_LONG).show();
+                        saveData(activity,"pincode",String.valueOf(response.body().getData().getPinCodeForTest()));
+                        saveData(activity,"user_phone",phone);
+                        Fragment fragment = new PassReset();
+                        activity.getSupportFragmentManager()
+                                .beginTransaction().replace(R.id.login_framlayout, fragment)
+                                .addToBackStack(null).commit();
+
+                    }
+                    else {
+                        Toast.makeText(activity,response.body().getMsg(),Toast.LENGTH_LONG).show();
+
+                    }
+
+                }
+                catch (Exception e){
+                    Toast.makeText(activity,e.getMessage(),Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResetPasword> call, Throwable t) {
+                Toast.makeText(activity,"failure",Toast.LENGTH_LONG).show();
 
             }
         });
-
-
     }
 
-    public static void getcity(FragmentActivity activity, Call<City> getcity, Spinner fragmentRegisterSpCity, CitySpinnerAdapter citySpinnerAdapter) {
-   getcity.enqueue(new Callback<City>() {
-       @Override
-       public void onResponse(Call<City> call, Response<City> response) {
-           try {
-               if(response.body().getStatus()== 1)
-               {
-                   citySpinnerAdapter.setData(response.body().getData(),"إخترالمدينة");
-                   fragmentRegisterSpCity.setAdapter(citySpinnerAdapter);
-               }
-           }
-           catch (Exception e){
+    public static void newpass(FragmentActivity activity, Call<ResetPasword> resetPass) {
+        resetPass.enqueue(new Callback<ResetPasword>() {
+            @Override
+            public void onResponse(Call<ResetPasword> call, Response<ResetPasword> response) {
+                try {
+                    if (response.body().getStatus()==1){
+                        Toast.makeText(activity,response.body().getMsg(),Toast.LENGTH_LONG).show();
+                        activity.startActivity(new Intent(activity, MainUi.class));
 
-           }
-       }
+                   /*
+                        Fragment fragment = new PassReset();
+                        activity.getSupportFragmentManager()
+                                .beginTransaction().replace(R.id.login_framlayout, fragment)
+                                .addToBackStack(null).commit();*/
 
-       @Override
-       public void onFailure(Call<City> call, Throwable t) {
+                    }
+                    else {
+                        Toast.makeText(activity,response.body().getMsg(),Toast.LENGTH_LONG).show();
 
-       }
-   });
+                    }
+
+                }
+                catch (Exception e){
+                    Toast.makeText(activity,e.getMessage(),Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResetPasword> call, Throwable t) {
+                Toast.makeText(activity,"failure",Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 }
 

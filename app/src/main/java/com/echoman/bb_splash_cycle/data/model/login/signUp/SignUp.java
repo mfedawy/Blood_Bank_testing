@@ -1,12 +1,10 @@
 
-package com.echoman.bb_splash_cycle.data.model.general.city;
-
-import java.util.List;
+package com.echoman.bb_splash_cycle.data.model.login.signUp;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class City {
+public class SignUp {
 
     @SerializedName("status")
     @Expose
@@ -16,7 +14,7 @@ public class City {
     private String msg;
     @SerializedName("data")
     @Expose
-    private List<CityData> data = null;
+    private SignUpData data;
 
     public Integer getStatus() {
         return status;
@@ -34,11 +32,11 @@ public class City {
         this.msg = msg;
     }
 
-    public List<CityData> getData() {
+    public SignUpData getData() {
         return data;
     }
 
-    public void setData(List<CityData> data) {
+    public void setData(SignUpData data) {
         this.data = data;
     }
 

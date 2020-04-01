@@ -1,5 +1,6 @@
 package com.echoman.bb_splash_cycle.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,13 +47,14 @@ public class SpinnerAdapter extends BaseAdapter {
         return 0;
     }
 
+  //  @SuppressLint({"SetTextI18n", "ViewHolder"})
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflter.inflate(R.layout.custom_spinner, null);
 
         TextView names =  view.findViewById(R.id.spinner_tv_text);
-
-        names.setText(generalResponseDataList.get(i).getName());
+        String ss= String.valueOf(generalResponseDataList.get(i).getName());
+        names.setText( ss);
         selectedId = generalResponseDataList.get(i).getId();
 
         return view;

@@ -1,10 +1,10 @@
 
-package com.echoman.bb_splash_cycle.data.model.auth;
+package com.echoman.bb_splash_cycle.data.model.login.resetPassword;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Auth {
+public class ResetPasword {
 
     @SerializedName("status")
     @Expose
@@ -14,7 +14,7 @@ public class Auth {
     private String msg;
     @SerializedName("data")
     @Expose
-    private AuthData data;
+    private ResetPasswordData data;
 
     public Integer getStatus() {
         return status;
@@ -32,11 +32,11 @@ public class Auth {
         this.msg = msg;
     }
 
-    public AuthData getData() {
+    public ResetPasswordData getData() {
         return data;
     }
 
-    public void setData(AuthData data) {
+    public void setData(ResetPasswordData data) {
         this.data = data;
     }
 

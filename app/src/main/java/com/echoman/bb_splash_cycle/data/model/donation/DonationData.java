@@ -1,7 +1,7 @@
 
 package com.echoman.bb_splash_cycle.data.model.donation;
 
-import com.echoman.bb_splash_cycle.data.model.auth.Client;
+import com.echoman.bb_splash_cycle.data.model.client.Client;
 import com.echoman.bb_splash_cycle.data.model.dataSource.DataSourceData;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

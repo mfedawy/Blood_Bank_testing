@@ -2,6 +2,7 @@
 package com.echoman.bb_splash_cycle.data.model.general.blood;
 
 import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

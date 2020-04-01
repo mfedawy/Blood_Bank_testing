@@ -59,57 +59,11 @@ private TextView tooltv;
         FrameLayout navController = findViewById(R.id.nav_host_fragment);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment, new PostsFragment()).addToBackStack(null).commit();
+                .replace(R.id.nav_host_fragment, new HomeFragment()).addToBackStack(null).commit();
 
-        //   NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        //  NavigationUI.setupWithNavController(navView, navController);
-
-        lin = findViewById(R.id.lin1);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        //   viewPager = (ViewPager) findViewById(R.id.viewpager);
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-
-        //   setupViewPager(viewPager);
-
-        //    tabLayout.setupWithViewPager(viewPager);
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                 Fragment fragment = null;
-                switch (tab.getPosition()) {
-                    case 0:
-                        fragment = new PostsFragment();
-
-                        break;
-                    case 1:
-                        fragment = new DonationsFragment();
 
 
-                        break;
-
-                }
-                FragmentManager fm = getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.nav_host_fragment, fragment);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.addToBackStack(null);
-                ft.commit();
-            }
-
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-
-        });
     }
 
 
@@ -122,23 +76,19 @@ private TextView tooltv;
                 Fragment fragment = null;
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        tabLayout.setVisibility(View.VISIBLE);
-                        fragment = new PostsFragment();
+                        fragment = new HomeFragment();
 
                         break;
                     case R.id.navigation_profile:
-                        tabLayout.setVisibility(View.GONE);
                         fragment = new ProfileFragment();
 
                         break;
                     case R.id.navigation_more:
                         fragment = new MoreFragment();
-                        tabLayout.setVisibility(View.GONE);
                         break;
 
                     case R.id.navigation_notifications:
                         fragment = new NotificationsFragment();
-                        tabLayout.setVisibility(View.GONE);
 
 
                         break;

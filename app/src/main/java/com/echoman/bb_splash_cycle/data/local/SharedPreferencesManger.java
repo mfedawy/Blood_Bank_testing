@@ -3,6 +3,7 @@ package com.echoman.bb_splash_cycle.data.local;
 import android.app.Activity;
 import android.content.SharedPreferences;
 
+import com.echoman.bb_splash_cycle.data.model.client.ClientData;
 import com.echoman.bb_splash_cycle.data.model.general.blood.BloodType;
 import com.google.gson.Gson;
 
@@ -96,6 +97,15 @@ public class SharedPreferencesManger {
         return sharedPreferences.getBoolean(data_Key, false);
     }
 
+    public static void saveUserData(Activity activity, ClientData clientData) {
+
+        if (clientData.getApiToken() == null) {
+            clientData.setApiToken(loadUserData(activity).getApiToken());
+        }
+
+       saveData(activity, USER_DATA, clientData);
+    }
+
     public static void clean(Activity activity) {
         setSharedPreferences(activity);
         if (sharedPreferences != null) {
@@ -103,6 +113,14 @@ public class SharedPreferencesManger {
             editor.clear();
             editor.commit();
         }
+    }
+    public static ClientData loadUserData(Activity activity) {
+        ClientData userData = null;
+
+        Gson gson = new Gson();
+        userData = gson.fromJson(loadData(activity, USER_DATA), ClientData.class);
+
+        return userData;
     }
 
 }

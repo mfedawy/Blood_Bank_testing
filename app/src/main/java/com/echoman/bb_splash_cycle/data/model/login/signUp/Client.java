@@ -1,21 +1,13 @@
 
-package com.echoman.bb_splash_cycle.data.model.auth;
+package com.echoman.bb_splash_cycle.data.model.login.signUp;
 
-import com.echoman.bb_splash_cycle.data.model.dataSource.DataSourceData;
+import com.echoman.bb_splash_cycle.data.model.login.BloodType;
+import com.echoman.bb_splash_cycle.data.model.login.City;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Client {
 
-    @SerializedName("id")
-    @Expose
-    private Integer id;
-    @SerializedName("created_at")
-    @Expose
-    private String createdAt;
-    @SerializedName("updated_at")
-    @Expose
-    private String updatedAt;
     @SerializedName("name")
     @Expose
     private String name;
@@ -37,48 +29,24 @@ public class Client {
     @SerializedName("blood_type_id")
     @Expose
     private String bloodTypeId;
-    @SerializedName("is_active")
+    @SerializedName("updated_at")
     @Expose
-    private String isActive;
-    @SerializedName("pin_code")
+    private String updatedAt;
+    @SerializedName("created_at")
     @Expose
-    private String pinCode;
-    @SerializedName("remember_token")
+    private String createdAt;
+    @SerializedName("id")
     @Expose
-    private Object rememberToken;
+    private Integer id;
     @SerializedName("can_donate")
     @Expose
     private Boolean canDonate;
     @SerializedName("city")
     @Expose
-    private DataSourceData city;
+    private City city;
     @SerializedName("blood_type")
     @Expose
-    private DataSourceData bloodType;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+    private BloodType bloodType;
 
     public String getName() {
         return name;
@@ -136,28 +104,28 @@ public class Client {
         this.bloodTypeId = bloodTypeId;
     }
 
-    public String getIsActive() {
-        return isActive;
+    public String getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setIsActive(String isActive) {
-        this.isActive = isActive;
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    public String getPinCode() {
-        return pinCode;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setPinCode(String pinCode) {
-        this.pinCode = pinCode;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Object getRememberToken() {
-        return rememberToken;
+    public Integer getId() {
+        return id;
     }
 
-    public void setRememberToken(Object rememberToken) {
-        this.rememberToken = rememberToken;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Boolean getCanDonate() {
@@ -168,19 +136,19 @@ public class Client {
         this.canDonate = canDonate;
     }
 
-    public DataSourceData getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(DataSourceData city) {
+    public void setCity(City city) {
         this.city = city;
     }
 
-    public DataSourceData getBloodType() {
+    public BloodType getBloodType() {
         return bloodType;
     }
 
-    public void setBloodType(DataSourceData bloodType) {
+    public void setBloodType(BloodType bloodType) {
         this.bloodType = bloodType;
     }
 
