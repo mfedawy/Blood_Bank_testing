@@ -63,12 +63,6 @@ public class GeneralRequest {
 
                         setSharedPreferences(activity);
 
-                        saveData(activity, USER_DATA, response.body().getData());
-                        saveData(activity, REMEMBER_ME, rememberMe);
-                        saveData(activity, USER_PASSWORD, password);
-                        saveApi(activity, USER_APITOKEN, userapiToken);
-                        saveUserData(activity,response.body().getData());
-
                         if (actionType.equals(LOGIN)) {
                             userapiToken = response.body().getData().getApiToken();
                             activity.startActivity(new Intent(activity, MainUi.class));
@@ -76,6 +70,12 @@ public class GeneralRequest {
                         if (actionType.equals(EDIT_PROFILE)) {
                             response.body().getData().setApiToken(apiToken);
                         }
+
+                        saveData(activity, USER_DATA, response.body().getData());
+                        saveData(activity, REMEMBER_ME, rememberMe);
+                        saveData(activity, USER_PASSWORD, password);
+                        saveApi(activity, USER_APITOKEN, userapiToken);
+                        saveUserData(activity,response.body().getData());
 
                     }
 

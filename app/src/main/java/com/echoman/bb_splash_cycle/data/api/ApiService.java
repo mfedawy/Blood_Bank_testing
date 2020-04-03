@@ -23,8 +23,9 @@ public interface ApiService {
 
 
     @GET("donation-requests")
-    Call<Donation> getalldonations(@Query("api_token") int apiToken,
+    Call<Donation> getalldonations(@Query("api_token") String apiToken,
                                    @Query("page") int page);
+
 
     @GET("blood-types")
     Call<GeneralResponse> getBloodTypes();

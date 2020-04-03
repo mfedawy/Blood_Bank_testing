@@ -3,24 +3,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
+import com.echoman.bb_splash_cycle.Helper.BaseFragment;
 import com.echoman.bb_splash_cycle.R;
-import com.echoman.bb_splash_cycle.Ui.BaseFragment;
-import com.echoman.bb_splash_cycle.Ui.mainui.ui.notifications.NotificationsFragment;
-import com.echoman.bb_splash_cycle.Ui.mainui.ui.profile.ProfileFragment;
 import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class HomeFragment extends BaseFragment {
 
@@ -45,8 +39,8 @@ public class HomeFragment extends BaseFragment {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFrag(new PostsFragment(), "المقالات");
         adapter.addFrag(new DonationsFragment(), "طلبات التبرع");
+        adapter.addFrag(new PostsFragment(), "المقالات");
         viewPager.setAdapter(adapter);
     }
 
