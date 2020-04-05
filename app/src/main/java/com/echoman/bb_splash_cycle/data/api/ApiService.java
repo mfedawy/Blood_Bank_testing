@@ -3,6 +3,8 @@ package com.echoman.bb_splash_cycle.data.api;
 
 import com.echoman.bb_splash_cycle.data.model.client.Client;
 import com.echoman.bb_splash_cycle.data.model.donation.Donation;
+import com.echoman.bb_splash_cycle.data.model.donation.DonationData;
+import com.echoman.bb_splash_cycle.data.model.donation.donationDetail.DonationDetail;
 import com.echoman.bb_splash_cycle.data.model.generalResponse.GeneralResponse;
 import com.echoman.bb_splash_cycle.data.model.login.resetPassword.ResetPasword;
 import com.echoman.bb_splash_cycle.data.model.login.signUp.SignUp;
@@ -25,6 +27,22 @@ public interface ApiService {
     @GET("donation-requests")
     Call<Donation> getalldonations(@Query("api_token") String apiToken,
                                    @Query("page") int page);
+
+
+    @GET("donation-requests")
+    Call<Donation> getadonationsfilter(@Query("api_token") String apiToken,
+                                       @Query("blood_type_id") int bloodtype,
+                                       @Query("governorate_id") int governorate_id,
+                                       @Query("page") int page
+    );
+    @GET("donation-requests")
+    Call<DonationDetail> getadonationsdetails(@Query("api_token") String apiToken,
+                                              @Query("donation_id") int donation_id
+
+    );
+
+
+
 
 
     @GET("blood-types")

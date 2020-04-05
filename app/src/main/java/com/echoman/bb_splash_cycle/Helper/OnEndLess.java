@@ -13,6 +13,7 @@ public abstract class OnEndLess extends RecyclerView.OnScrollListener {
     public int firstVisibleItem, visibleItemCount, totalItemCount;
 
     public int current_page = 1;
+    public int previous_page = 1;
 
     private LinearLayoutManager mLinearLayoutManager;
 

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/donation_details_name"
+                style="@style/text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                style="@style/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp" />
+
+            <TextView
+                android:id="@+id/donation_details_age"
+                style="@style/text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                style="@style/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp" />
+
+            <TextView
+                android:id="@+id/donation_details_blood_type"
+                style="@style/text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                style="@style/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp" />
+
+
+            <TextView
+                android:id="@+id/donation_details_count"
+                style="@style/text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                style="@style/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp" />
+
+            <TextView
+                android:id="@+id/donation_details_hospital"
+                style="@style/text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                style="@style/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp" />
+
+            <TextView
+                android:id="@+id/donation_details_address"
+                style="@style/text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                style="@style/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp" />
+
+            <TextView
+                android:id="@+id/donation_details_phone"
+                style="@style/text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                style="@style/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp" />
+
+            <TextView
+                android:id="@+id/donation_details_notes"
+                style="@style/text_view2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/donation_details_map"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_180sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp" />
+
+            <Button
+                android:id="@+id/donation_details_call"
+                style="@style/btn2"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="center_horizontal"
+                android:text="اتصال" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
